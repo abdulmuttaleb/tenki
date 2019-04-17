@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_weather/utils/Color.dart';
+import 'package:flutter_weather/utils/AssetsLoader.dart';
 
 class MyHomePage extends StatefulWidget {
 
@@ -8,6 +9,7 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+  AssetsLoader _assetsLoader = new AssetsLoader();
   Color mainBlue = HexColor("#4E78FF");
   Color yellow = HexColor("#ECE800");
 
@@ -61,7 +63,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   child: new Center(
                     child: new Column(
                       children: <Widget>[
-                        new Image.asset("assets/images/sunny.png",
+                        new Image.asset(_assetsLoader.images["thunderstorm"],
                             width: 128.0,
                             height: 128.0),
                         new Container(
@@ -92,8 +94,7 @@ class _MyHomePageState extends State<MyHomePage> {
                       ],
                     ),
                   )
-              )
-
+              ),
             ],
           )
         ),
