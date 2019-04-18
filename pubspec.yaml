@@ -1,5 +1,5 @@
-name: flutter_weather
-description: A new Flutter application.
+name: Tenki
+description: A simple weather cross-platform mobile application.
 
 # The following defines the version and build number for your application.
 # A version number is three numbers separated by dots, like 1.2.43
@@ -19,7 +19,8 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-
+  shared_preferences: ^0.5.2
+  geolocator: '^3.0.1'
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^0.1.2

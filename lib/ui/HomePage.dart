@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_weather/utils/Color.dart';
-import 'package:flutter_weather/utils/AssetsLoader.dart';
+import 'package:Tenki/utils/Color.dart';
+import 'package:Tenki/utils/AssetsLoader.dart';
 
 class MyHomePage extends StatefulWidget {
 
