@@ -24,15 +24,12 @@ class Weather{
     _weather = value;
   }
 
-  //todo get weather main
   get weatherMain => _weather['main'];
 
-  //todo get temp
   get temp => _main['temp'];
-  //todo get min temp
+
   get minTemp => _main['temp_min'];
 
-  //todo get max temp
   get maxTemp => _main['temp_max'];
 
 }
