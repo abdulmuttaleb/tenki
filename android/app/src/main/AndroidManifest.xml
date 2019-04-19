@@ -6,6 +6,7 @@
         android:name="io.flutter.app.FlutterApplication"
         android:label="Tenki"
         android:icon="@mipmap/ic_launcher">
+        <meta-data android:name="com.google.android.gms.version" android:value="@integer/google_play_services_version" />
         <activity
             android:name=".MainActivity"
             android:launchMode="singleTop"

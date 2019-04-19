@@ -1,6 +1,8 @@
+import 'package:Tenki/utils/DataLoader.dart';
 import 'package:flutter/material.dart';
 import 'package:Tenki/utils/Color.dart';
 import 'package:Tenki/utils/AssetsLoader.dart';
+import 'package:Tenki/models/Weather.dart';
 
 class MyHomePage extends StatefulWidget {
 
@@ -12,8 +14,9 @@ class _MyHomePageState extends State<MyHomePage> {
   AssetsLoader _assetsLoader = new AssetsLoader();
   Color mainBlue = HexColor("#4E78FF");
   Color yellow = HexColor("#ECE800");
-
   bool _value = false;
+  DataLoader dataLoader = new DataLoader();
+  var weather = new Weather();
   void _unitOnChanged(bool value){
     setState(() {
       _value = value;
@@ -24,6 +27,17 @@ class _MyHomePageState extends State<MyHomePage> {
       }
     });
   }
+
+  @override
+  void initState() {
+      super.initState();
+      dataLoader.checkIfDataSaved().then((_){
+        setState(() {
+          weather = dataLoader.weather;
+        });
+      });
+  }
+
   @override
   Widget build(BuildContext context) {
     return new Scaffold(
@@ -63,26 +77,26 @@ class _MyHomePageState extends State<MyHomePage> {
                   child: new Center(
                     child: new Column(
                       children: <Widget>[
-                        new Image.asset(_assetsLoader.images["thunderstorm"],
+                        new Image.asset(weather.mainWeather==''?"assets/images/rainy.png":_assetsLoader.images[weather.mainWeather],
                             width: 128.0,
                             height: 128.0),
                         new Container(
                           padding: EdgeInsets.only(top: 32.0),
                           child: new Column(
                             children: <Widget>[
-                              new Text("Clear",
+                              new Text(weather.mainWeather,
                                 style: new TextStyle(
                                     fontSize: 34.0,
                                     color: Colors.white
                                 ),),
                               new Padding(padding: EdgeInsets.all(4.0)),
-                              new Text("25°",
+                              new Text(_value?weather.mainTemp.toString() :weather.mainTemp.toString(),
                                 style: new TextStyle(
                                     fontSize: 34.0,
                                     color: Colors.white
                                 ),),
                               new Padding(padding: EdgeInsets.all(4.0)),
-                              new Text("26 / 18°C",
+                              new Text(weather.maxTemp.toString()+"/ "+weather.minTemp.toString()+"°C",
                                 style: new TextStyle(
                                     fontSize: 15.0,
                                     color: Colors.white
