@@ -3,10 +3,10 @@ import "package:shared_preferences/shared_preferences.dart";
 import 'package:geolocator/geolocator.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
+import 'ApiHelper.dart';
 class DataLoader{
 
   final _endpointUrl = "api.openweathermap.org";
-  final _apiKey = "19cb6d36e6345a5973ceac1f01c2883c";
   var weather = new Weather();
   Position userPosition;
   DataLoader();
@@ -63,7 +63,7 @@ class DataLoader{
   }
 
   _fetchWeatherData() async{
-    var requestUri = new Uri.http(_endpointUrl,"/data/2.5/weather",{"lat":userPosition.latitude.toString(),"lon":userPosition.longitude.toString(),"appid":_apiKey});
+    var requestUri = new Uri.http(_endpointUrl,"/data/2.5/weather",{"lat":userPosition.latitude.toString(),"lon":userPosition.longitude.toString(),"appid":ApiHelper().apiKey});
 
     final response = await http.get(requestUri);
     if(response.statusCode == 200){
